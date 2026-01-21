@@ -10,7 +10,6 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'Library Portal | Student Portal',
   description: 'College Library Management System - Manage and track your issued books',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
