@@ -5,8 +5,9 @@ import { Navbar } from '@/components/navbar';
 import { DashboardCard } from '@/components/dashboard-card';
 import { BookCard } from '@/components/book-card';
 import { Button } from '@/components/ui/button';
-import { BookOpen, AlertCircle, Clock, TrendingUp } from 'lucide-react';
+import { BookOpen, AlertCircle, Clock, TrendingUp, Library, BookMarked, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
+import { WavyBackground } from '@/components/ui/wavy-background';
 
 const recentBooks = [
   {
@@ -34,17 +35,38 @@ const recentBooks = [
 
 export default function Dashboard() {
   return (
-    <div className="flex h-screen bg-background">
+    <WavyBackground
+      className="flex h-screen"
+      containerClassName="h-screen overflow-hidden"
+      colors={["#ea580c", "#fbbf24", "#f97316", "#fed7aa"]}
+      backgroundFill="white"
+      blur={10}
+      speed="slow"
+      waveWidth={50}
+      waveOpacity={0.2}
+    >
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Navbar studentName="Rajesh Kumar" studentId="CS2024001" />
-        
-        <main className="flex-1 overflow-auto">
+
+        <main className="flex-1 overflow-auto bg-transparent">
           <div className="p-8">
             {/* Header */}
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-foreground mb-2">Welcome Back</h1>
-              <p className="text-muted-foreground">Manage and track your library books</p>
+            <div className="mb-8 relative">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg">
+                  <Library className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+                    Welcome Back
+                  </h1>
+                  <p className="text-gray-600 flex items-center gap-2">
+                    <BookMarked className="w-4 h-4" />
+                    Manage and track your library books
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Dashboard Cards */}
@@ -80,11 +102,19 @@ export default function Dashboard() {
             </div>
 
             {/* Recent Books Section */}
-            <div className="bg-card rounded-lg border border-border p-6 mb-8">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-orange-100 shadow-xl p-6 mb-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-100/50 to-transparent rounded-full blur-3xl -z-10" />
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-foreground">Featured Books</h2>
+                <div className="flex items-center gap-2">
+                  <GraduationCap className="w-6 h-6 text-orange-600" />
+                  <h2 className="text-xl font-bold text-gray-800">Featured Books</h2>
+                </div>
                 <Link href="/categories">
-                  <Button variant="outline" size="sm">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-orange-300 text-orange-600 hover:bg-orange-50 hover:text-orange-700 hover:border-orange-400 transition-all"
+                  >
                     View All
                   </Button>
                 </Link>
@@ -99,48 +129,50 @@ export default function Dashboard() {
 
             {/* Quick Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-orange-100 shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <Library className="w-5 h-5 text-orange-600" />
                   Library Information
                 </h3>
                 <ul className="space-y-3 text-sm">
-                  <li className="flex justify-between">
-                    <span className="text-muted-foreground">Opening Hours:</span>
-                    <span className="font-medium text-foreground">8 AM - 6 PM</span>
+                  <li className="flex justify-between p-2 rounded-lg hover:bg-orange-50/50 transition-colors">
+                    <span className="text-gray-600">Opening Hours:</span>
+                    <span className="font-semibold text-orange-600">8 AM - 6 PM</span>
                   </li>
-                  <li className="flex justify-between">
-                    <span className="text-muted-foreground">Lending Period:</span>
-                    <span className="font-medium text-foreground">14 Days</span>
+                  <li className="flex justify-between p-2 rounded-lg hover:bg-orange-50/50 transition-colors">
+                    <span className="text-gray-600">Lending Period:</span>
+                    <span className="font-semibold text-orange-600">14 Days</span>
                   </li>
-                  <li className="flex justify-between">
-                    <span className="text-muted-foreground">Max Books:</span>
-                    <span className="font-medium text-foreground">5 Books</span>
+                  <li className="flex justify-between p-2 rounded-lg hover:bg-orange-50/50 transition-colors">
+                    <span className="text-gray-600">Max Books:</span>
+                    <span className="font-semibold text-orange-600">5 Books</span>
                   </li>
-                  <li className="flex justify-between">
-                    <span className="text-muted-foreground">Late Fee:</span>
-                    <span className="font-medium text-foreground">₹5/day</span>
+                  <li className="flex justify-between p-2 rounded-lg hover:bg-orange-50/50 transition-colors">
+                    <span className="text-gray-600">Late Fee:</span>
+                    <span className="font-semibold text-orange-600">₹5/day</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-orange-100 shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <GraduationCap className="w-5 h-5 text-orange-600" />
                   Account Status
                 </h3>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between pb-3 border-b border-border">
-                    <span className="text-muted-foreground">Account Status:</span>
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300">
+                  <div className="flex items-center justify-between pb-3 border-b border-orange-100">
+                    <span className="text-gray-600">Account Status:</span>
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-md">
                       Active
                     </span>
                   </div>
-                  <div className="flex items-center justify-between pb-3 border-b border-border">
-                    <span className="text-muted-foreground">Membership Valid:</span>
-                    <span className="text-foreground font-medium">Till Dec 2024</span>
+                  <div className="flex items-center justify-between pb-3 border-b border-orange-100">
+                    <span className="text-gray-600">Membership Valid:</span>
+                    <span className="text-orange-600 font-semibold">Till Dec 2024</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Books Issued This Semester:</span>
-                    <span className="text-foreground font-medium">12</span>
+                    <span className="text-gray-600">Books Issued This Semester:</span>
+                    <span className="text-orange-600 font-semibold text-lg">12</span>
                   </div>
                 </div>
               </div>
@@ -148,6 +180,6 @@ export default function Dashboard() {
           </div>
         </main>
       </div>
-    </div>
+    </WavyBackground>
   );
 }

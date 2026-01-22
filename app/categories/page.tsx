@@ -3,7 +3,8 @@
 import { Sidebar } from '@/components/sidebar';
 import { Navbar } from '@/components/navbar';
 import Link from 'next/link';
-import { BookOpen, Code, Zap, Hammer, Building, Calculator } from 'lucide-react';
+import { BookOpen, Code, Zap, Hammer, Building, Calculator, Library, Sparkles } from 'lucide-react';
+import { WavyBackground } from '@/components/ui/wavy-background';
 
 const categories = [
   {
@@ -11,66 +12,91 @@ const categories = [
     name: 'Computer Science',
     icon: Code,
     books: 245,
-    color: 'bg-blue-50',
-    iconColor: 'text-blue-600',
+    color: 'from-orange-50 to-orange-100/50',
+    iconColor: 'from-orange-500 to-orange-600',
+    textColor: 'text-orange-700',
   },
   {
     id: 'electronics',
     name: 'Electronics',
     icon: Zap,
     books: 128,
-    color: 'bg-yellow-50',
-    iconColor: 'text-yellow-600',
+    color: 'from-amber-50 to-amber-100/50',
+    iconColor: 'from-amber-500 to-amber-600',
+    textColor: 'text-amber-700',
   },
   {
     id: 'mechanical',
     name: 'Mechanical',
     icon: Hammer,
     books: 189,
-    color: 'bg-red-50',
-    iconColor: 'text-red-600',
+    color: 'from-orange-50 to-red-50',
+    iconColor: 'from-orange-600 to-red-600',
+    textColor: 'text-red-700',
   },
   {
     id: 'civil',
     name: 'Civil',
     icon: Building,
     books: 156,
-    color: 'bg-green-50',
-    iconColor: 'text-green-600',
+    color: 'from-orange-50 to-yellow-50',
+    iconColor: 'from-orange-500 to-yellow-600',
+    textColor: 'text-orange-700',
   },
   {
     id: 'mathematics',
     name: 'Mathematics',
     icon: Calculator,
     books: 203,
-    color: 'bg-purple-50',
-    iconColor: 'text-purple-600',
+    color: 'from-orange-100 to-orange-50',
+    iconColor: 'from-orange-600 to-orange-500',
+    textColor: 'text-orange-700',
   },
   {
     id: 'general',
     name: 'General',
     icon: BookOpen,
     books: 312,
-    color: 'bg-gray-50',
-    iconColor: 'text-gray-600',
+    color: 'from-amber-50 to-orange-50',
+    iconColor: 'from-amber-500 to-orange-500',
+    textColor: 'text-orange-600',
   },
 ];
 
 export default function CategoriesPage() {
   return (
-    <div className="flex h-screen bg-background">
+    <WavyBackground
+      className="flex h-screen"
+      containerClassName="h-screen overflow-hidden"
+      colors={["#ea580c", "#fbbf24", "#f97316", "#fed7aa"]}
+      backgroundFill="white"
+      blur={10}
+      speed="slow"
+      waveWidth={50}
+      waveOpacity={0.2}
+    >
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Navbar studentName="Rajesh Kumar" studentId="CS2024001" />
 
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto bg-transparent">
           <div className="p-8">
             {/* Header */}
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-foreground mb-2">Browse Categories</h1>
-              <p className="text-muted-foreground">
-                Explore books by subject area
-              </p>
+            <div className="mb-8 relative">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg">
+                  <Library className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+                    Browse Categories
+                  </h1>
+                  <p className="text-gray-600 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4" />
+                    Explore books by subject area
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Categories Grid */}
@@ -79,25 +105,29 @@ export default function CategoriesPage() {
                 const Icon = category.icon;
                 return (
                   <Link key={category.id} href={`/categories/${category.id}`}>
-                    <div className={`${category.color} rounded-lg border border-border p-8 cursor-pointer hover:shadow-lg transition-shadow h-full`}>
-                      <div className="flex items-start justify-between mb-6">
-                        <div className={`p-4 rounded-lg ${category.color}`}>
-                          <Icon className={`w-8 h-8 ${category.iconColor}`} />
+                    <div className={`bg-gradient-to-br ${category.color} rounded-2xl border border-orange-100 p-8 cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 h-full relative overflow-hidden group`}>
+                      {/* Decorative gradient blob */}
+                      <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-orange-200/30 to-transparent rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500" />
+
+                      <div className="flex items-start justify-between mb-6 relative z-10">
+                        <div className={`p-4 rounded-xl bg-gradient-to-br ${category.iconColor} shadow-lg group-hover:shadow-xl transition-shadow`}>
+                          <Icon className="w-8 h-8 text-white" />
                         </div>
-                        <span className="text-xs font-medium text-muted-foreground bg-background px-2 py-1 rounded">
+                        <span className="text-xs font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-1.5 rounded-full shadow-md">
                           {category.books} books
                         </span>
                       </div>
 
-                      <h2 className="text-2xl font-bold text-foreground mb-2">
+                      <h2 className={`text-2xl font-bold ${category.textColor} mb-2 group-hover:scale-105 transition-transform`}>
                         {category.name}
                       </h2>
-                      <p className="text-sm text-muted-foreground mb-6">
+                      <p className="text-sm text-gray-600 mb-6">
                         Explore {category.books} available titles in this category
                       </p>
 
-                      <div className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
-                        View Books →
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg text-sm font-semibold shadow-md hover:shadow-lg hover:from-orange-600 hover:to-orange-700 transition-all group-hover:gap-3">
+                        View Books
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
                       </div>
                     </div>
                   </Link>
@@ -107,6 +137,6 @@ export default function CategoriesPage() {
           </div>
         </main>
       </div>
-    </div>
+    </WavyBackground>
   );
 }

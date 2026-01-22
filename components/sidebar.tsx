@@ -19,17 +19,17 @@ export function Sidebar() {
 
   return (
     <aside className="w-64 h-screen flex flex-col sticky top-0 border-r border-orange-100 bg-gradient-to-b from-orange-50/80 via-white to-white">
-      
+
       {/* --- LOGO HEADER --- */}
       <div className="p-6 border-b border-orange-100">
         <div className="relative w-50 h-20">
-           <Image 
-             src="/muj-logo-white.png" 
-             alt="Manipal University Jaipur"
-             fill
-             className="object-contain "
-             priority
-           />
+          <Image
+            src="/muj-logo-white.png"
+            alt="Manipal University Jaipur"
+            fill
+            className="object-contain "
+            priority
+          />
         </div>
       </div>
 
@@ -44,11 +44,10 @@ export function Sidebar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
-                    active
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${active
                       ? 'bg-orange-100 text-orange-700 shadow-sm' // Active State
                       : 'text-gray-500 hover:bg-orange-50 hover:text-orange-600' // Inactive State
-                  }`}
+                    }`}
                 >
                   <Icon className={`w-5 h-5 ${active ? 'text-orange-600' : 'text-gray-400 group-hover:text-orange-500'}`} />
                   <span>{item.label}</span>
