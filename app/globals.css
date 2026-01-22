@@ -124,32 +124,18 @@
   }
 }
 
-@import "tailwindcss";
+@theme inline {
+  --animate-shine: shine var(--duration) infinite linear;
 
-@theme {
-  /* Use 'linear' so it doesn't slow down at corners */
-  --animate-shine: shine 8s linear infinite;
-  
-  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
-
-  /* NEW: Moves the shine CLOCKWISE around the card */
   @keyframes shine {
-    0% { background-position: 0% 0%; }     /* Top Left */
-    25% { background-position: 100% 0%; }   /* Top Right */
-    50% { background-position: 100% 100%; } /* Bottom Right */
-    75% { background-position: 0% 100%; }   /* Bottom Left */
-    100% { background-position: 0% 0%; }    /* Back to Top Left */
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
   }
-
-  @keyframes cell-ripple {
-    0% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.05); }
-    100% { opacity: 0.4; transform: scale(1); }
-  }
-}
-
-/* Force GPU for smoothness */
-.animate-shine {
-  will-change: background-position;
-  transform: translateZ(0);
 }

@@ -8,7 +8,6 @@ import { Lock, HelpCircle, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShineBorder } from '@/components/ui/shine-border';
-import { ParallaxBackground } from '@/components/ui/floating-parallax-text';
 import { WavyBackground } from '@/components/ui/wavy-background';
 
 
@@ -50,10 +49,6 @@ export default function LoginPage() {
       waveWidth={50}
       waveOpacity={0.3}
   >
-    
-    {/* 2. KEEPING YOUR PARALLAX (If you want both effects) */}
-    {/* If it feels too busy, you can remove this line */}
-    <ParallaxBackground />
 
     {/* 3. YOUR EXACT CARD CODE (UNCHANGED) */}
     <div className="relative w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-10">

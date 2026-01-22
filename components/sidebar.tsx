@@ -27,7 +27,7 @@ export function Sidebar() {
              src="/muj-logo-white.png" 
              alt="Manipal University Jaipur"
              fill
-             className="object-contain " // Turns white logo to BLACK for visibility
+             className="object-contain "
              priority
            />
         </div>
