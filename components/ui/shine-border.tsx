@@ -26,7 +26,7 @@ export function ShineBorder({
           "--shine-color": Array.isArray(shineColor) ? shineColor.join(",") : shineColor,
           backgroundImage: `radial-gradient(transparent, transparent, var(--shine-color), transparent, transparent)`,
           // CHANGED: 200% makes the "dot" smaller and clearer to follow
-          backgroundSize: "200% 200%", 
+          backgroundSize: "200% 200%",
           mask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
           WebkitMask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
           WebkitMaskComposite: "xor",
