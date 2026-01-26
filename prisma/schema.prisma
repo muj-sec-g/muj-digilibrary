@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Student Model
+model Student {
+  id              String          @id @default(cuid())
+  regNumber       String          @unique // e.g., 219301XXX
+  email           String          @unique
+  password        String          // Hashed password
+  firstName       String
+  lastName        String
+  course          String?
+  year            Int?
+  department      String?
+  phoneNumber     String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  
+  // Relations
+  borrowRecords   BorrowRecord[]
+  reservations    Reservation[]
+  
+  @@index([regNumber])
+  @@index([email])
+}
+
+// Book Model
+model Book {
+  id              String          @id @default(cuid())
+  isbn            String          @unique
+  title           String
+  author          String
+  publisher       String?
+  publishedYear   Int?
+  category        String
+  description     String?
+  coverImage      String?         // URL to cover image
+  totalCopies     Int             @default(1)
+  availableCopies Int             @default(1)
+  location        String?         // Shelf location
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  
+  // Relations
+  borrowRecords   BorrowRecord[]
+  reservations    Reservation[]
+  
+  @@index([isbn])
+  @@index([title])
+  @@index([category])
+}
+
+// Borrow Record Model
+model BorrowRecord {
+  id              String          @id @default(cuid())
+  studentId       String
+  bookId          String
+  borrowDate      DateTime        @default(now())
+  dueDate         DateTime
+  returnDate      DateTime?
+  status          BorrowStatus    @default(BORROWED)
+  fineAmount      Float           @default(0)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  
+  // Relations
+  student         Student         @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  book            Book            @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  
+  @@index([studentId])
+  @@index([bookId])
+  @@index([status])
+}
+
+// Reservation Model
+model Reservation {
+  id              String            @id @default(cuid())
+  studentId       String
+  bookId          String
+  reservationDate DateTime          @default(now())
+  expiryDate      DateTime
+  status          ReservationStatus @default(ACTIVE)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  
+  // Relations
+  student         Student           @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  book            Book              @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  
+  @@index([studentId])
+  @@index([bookId])
+  @@index([status])
+}
+
+// Enums
+enum BorrowStatus {
+  BORROWED
+  RETURNED
+  OVERDUE
+}
+
+enum ReservationStatus {
+  ACTIVE
+  FULFILLED
+  EXPIRED
+  CANCELLED
+}
