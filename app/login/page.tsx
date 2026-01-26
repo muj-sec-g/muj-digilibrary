@@ -40,8 +40,8 @@ export default function LoginPage() {
   return (
     /* 1. REPLACED OUTER DIV WITH WAVY BACKGROUND */
     <WavyBackground
-      className="max-w-4xl mx-auto w-full flex items-center justify-center p-4"
-      containerClassName="min-h-screen overflow-hidden"
+      className="z-10"
+      containerClassName="fixed inset-0 grid place-items-center bg-white"
       colors={["#ea580c", "#fbbf24", "#f97316", "#fed7aa"]} // Manipal Theme
       backgroundFill="white"
       blur={10}
@@ -161,7 +161,7 @@ export default function LoginPage() {
 
       </div>
 
-      <div className="absolute bottom-6 text-xs text-gray-400 z-10">
+      <div className="absolute bottom-6 w-full text-center text-xs text-gray-400 z-10 pointer-events-none">
         © 2026 Manipal University Jaipur
       </div>
 
