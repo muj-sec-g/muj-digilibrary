@@ -44,7 +44,11 @@ export async function POST(req: NextRequest) {
         // Send OTP via email using Resend
         let emailSent = false;
         try {
-            await resend.emails.send({
+            console.log('[Resend] Attempting to send email to:', email);
+            console.log('[Resend] API Key exists:', !!process.env.RESEND_API_KEY);
+            console.log('[Resend] API Key starts with re_:', process.env.RESEND_API_KEY?.startsWith('re_'));
+
+            const result = await resend.emails.send({
                 from: 'MUJ DigiLibrary <onboarding@resend.dev>', // Change to your verified domain
                 to: email,
                 subject: 'Your MUJ DigiLibrary Login OTP',
@@ -86,10 +90,21 @@ export async function POST(req: NextRequest) {
                 `,
             });
 
-            console.log(`✅ OTP email sent to ${email}`);
+            console.log('[Resend] Response:', JSON.stringify(result, null, 2));
+
+            if (result.error) {
+                throw new Error(`Resend API error: ${JSON.stringify(result.error)}`);
+            }
+
+            console.log(`✅ OTP email sent to ${email} (ID: ${result.data?.id})`);
             emailSent = true;
         } catch (emailError: any) {
-            console.error('Failed to send email:', emailError);
+            console.error('[Resend] Failed to send email:', emailError);
+            console.error('[Resend] Error details:', {
+                message: emailError.message,
+                name: emailError.name,
+                stack: emailError.stack,
+            });
             // Fallback to console logging in development
             console.log('\n' + '='.repeat(50));
             console.log(`🔐 OTP for ${email}: ${otp} (Email failed, check console)`);

@@ -27,6 +27,16 @@ interface ValidationResult {
 export function validateStudentEmail(email: string): ValidationResult {
     const trimmedEmail = email.trim().toLowerCase();
 
+    // DEV MODE: Allow pytworks@gmail.com for Resend testing
+    if (process.env.NODE_ENV === 'development' && trimmedEmail === 'pytworks@gmail.com') {
+        return {
+            isValid: true,
+            graduationYear: 2027,
+            batchYear: 2023,
+            isFaculty: false,
+        };
+    }
+
     // Step 1: Domain validation
     const studentDomain = '@muj.manipal.edu';
     const facultyDomain = '@jaipur.manipal.edu';
