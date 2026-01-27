@@ -116,8 +116,8 @@ export default function LoginPage() {
         throw new Error(data.error || 'Invalid OTP');
       }
 
-      // Success - redirect to dashboard
-      router.push('/dashboard');
+      // Success - redirect to books page
+      router.push('/books');
     } catch (err: any) {
       setError(err.message || 'Invalid OTP. Please try again.');
       setOtp(['', '', '', '']); // Clear OTP on error
