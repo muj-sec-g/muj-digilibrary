@@ -19,14 +19,14 @@ async function main() {
         update: {},
         create: {
             regNumber: '219301001',
-            email: 'piyush@muj.manipal.edu',
-            password: 'password123',
+            email: 'piyush.23fe10cai00225@muj.manipal.edu',
             firstName: 'Piyush',
             lastName: 'User',
             course: 'B.Tech',
             department: 'Computer Science',
             year: 3,
             phoneNumber: '9876543210',
+            validUntil: 2027, // 2023 batch + 4 years
         },
     });
 
