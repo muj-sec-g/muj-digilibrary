@@ -30,5 +30,11 @@ class OTPStore {
     }
 }
 
+const globalForOTP = globalThis as unknown as {
+    otpStore: OTPStore | undefined;
+};
+
 // Export singleton instance
-export const otpStore = new OTPStore();
+export const otpStore = globalForOTP.otpStore ?? new OTPStore();
+
+if (process.env.NODE_ENV !== "production") globalForOTP.otpStore = otpStore;
