@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { OTPInput } from '@/components/ui/otp-input';
 import { GraduationCap, Library, BookOpen, Mail, Lock, ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
-import { BeamsBackground } from '@/components/ui/beams-background';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { validateStudentEmail } from '@/lib/validateEmail';
 
@@ -163,15 +163,16 @@ export default function HomePage() {
   };
 
   return (
-    <BeamsBackground className="h-screen w-full overflow-y-hidden">
-      <div className="h-full w-full flex flex-col md:flex-row">
+    <div className="h-screen w-full relative bg-slate-50 overflow-y-hidden">
+      <BackgroundBeams />
+      <div className="h-full w-full flex flex-col md:flex-row relative z-10">
 
         {/* LEFT PANEL — Branding (60%) */}
         <div className="relative w-full md:w-[60%] h-[40vh] md:h-full flex flex-col items-center justify-center shrink-0">
           <div className="relative z-10 text-center px-8 max-w-xl">
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-sm font-medium mb-6 md:mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-6 md:mb-8">
               <GraduationCap className="w-4 h-4" />
               <span>Manipal University Jaipur</span>
             </div>
@@ -371,6 +372,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </BeamsBackground>
+    </div>
   );
 }

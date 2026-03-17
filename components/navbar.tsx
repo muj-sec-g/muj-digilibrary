@@ -13,8 +13,8 @@ interface NavbarProps {
 }
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: Home },
   { href: '/books', label: 'Books', icon: Library },
+  { href: '/dashboard', label: 'Dashboard', icon: Home },
 ];
 
 export function Navbar({ studentName = 'Student', studentId = '' }: NavbarProps) {
