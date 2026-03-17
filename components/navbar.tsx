@@ -15,7 +15,6 @@ interface NavbarProps {
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: Home },
   { href: '/books', label: 'Books', icon: Library },
-  { href: '/categories', label: 'Categories', icon: Grid3X3 },
 ];
 
 export function Navbar({ studentName = 'Student', studentId = '' }: NavbarProps) {
