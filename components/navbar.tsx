@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, Grid3X3, BookMarked, Library, LogOut, Menu, X } from 'lucide-react';
+import { Home, Grid3X3, BookMarked, Library, LogOut, Menu, X, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface NavbarProps {
@@ -15,6 +15,7 @@ interface NavbarProps {
 const navItems = [
   { href: '/books', label: 'Books', icon: Library },
   { href: '/dashboard', label: 'Dashboard', icon: Home },
+  { href: '/about', label: 'About Us', icon: Info },
 ];
 
 export function Navbar({ studentName = 'Student', studentId = '' }: NavbarProps) {
