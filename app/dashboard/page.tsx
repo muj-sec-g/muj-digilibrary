@@ -51,12 +51,12 @@ export default function Dashboard() {
 
   return (
     <BeamsBackground
-      className="flex flex-col h-screen"
+      className="flex flex-col"
       intensity="medium"
     >
       <Navbar />
 
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1">
         <div className="p-8">
           {/* Header */}
           <div className="mb-8 relative">

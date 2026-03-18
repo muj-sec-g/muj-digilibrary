@@ -139,12 +139,12 @@ export default function BooksPage() {
 
     return (
         <BeamsBackground
-            className="flex flex-col h-screen"
+            className="flex flex-col"
             intensity="medium"
         >
-            <Navbar studentName="Piyush" studentId="23FE10CAI00225" />
+            <Navbar />
 
-            <main className="flex-1 overflow-auto">
+            <main className="flex-1">
                 <div className="p-8 max-w-7xl mx-auto border-transparent relative z-10">
 
                     {/* Header */}

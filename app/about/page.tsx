@@ -19,10 +19,10 @@ export default function AboutPage() {
     const [activeTab, setActiveTab] = useState('overview');
 
     return (
-        <BeamsBackground className="flex flex-col h-screen" intensity="medium">
+        <BeamsBackground className="flex flex-col" intensity="medium">
             <Navbar />
 
-            <main className="flex-1 overflow-hidden flex flex-col pt-8 space-y-8">
+            <main className="flex-1 flex flex-col pt-8 space-y-8">
                 {/* Header Section */}
                 <div className="px-6 md:px-12 shrink-0">
                     <h1 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-2">
@@ -64,7 +64,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Content Details Area */}
-                <div className="flex-1 overflow-y-auto px-6 md:px-12 pb-12">
+                <div className="flex-1 px-6 md:px-12 pb-12">
                     <div className="bg-white/90 backdrop-blur-md border border-orange-100/50 shadow-xl rounded-2xl p-8 min-h-[500px]">
                         {activeTab === 'overview' && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
