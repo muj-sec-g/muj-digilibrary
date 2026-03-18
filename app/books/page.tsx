@@ -149,19 +149,13 @@ export default function BooksPage() {
 
                     {/* Header */}
                     <div className="mb-8 relative flex items-center justify-between flex-wrap gap-4">
-                        <div className="flex items-center gap-3">
-                            <div className="p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg">
-                                <Library className="w-8 h-8 text-white" />
-                            </div>
-                            <div>
-                                <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-                                    Browse Books
-                                </h1>
-                                <p className="text-gray-600 flex items-center gap-2">
-                                    <Sparkles className="w-4 h-4" />
-                                    Search by title, author, or category
-                                </p>
-                            </div>
+                        <div>
+                            <h1 className="text-3xl font-bold text-gray-900">
+                                Browse Books
+                            </h1>
+                            <p className="text-gray-600 mt-1">
+                                Search by title, author, or category
+                            </p>
                         </div>
                     </div>
 
@@ -207,8 +201,8 @@ export default function BooksPage() {
                                 variant={showOnlyAvailable ? 'default' : 'outline'}
                                 onClick={() => setShowOnlyAvailable(!showOnlyAvailable)}
                                 className={`h-12 whitespace-nowrap transition-all ${showOnlyAvailable
-                                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 text-white shadow-md border-transparent'
-                                        : 'bg-white/60 border-orange-200 text-orange-700 hover:bg-orange-50 hover:text-orange-800'
+                                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 text-white shadow-md border-transparent'
+                                    : 'bg-white/60 border-orange-200 text-orange-700 hover:bg-orange-50 hover:text-orange-800'
                                     }`}
                             >
                                 {showOnlyAvailable ? 'Available Only' : 'Show All'}

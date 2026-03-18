@@ -78,18 +78,13 @@ export default function Dashboard() {
         <div className="p-8">
           {/* Header */}
           <div className="mb-8 relative">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg">
-                <BookMarked className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-                  Dashboard & Profile
-                </h1>
-                <p className="text-gray-600 flex items-center gap-2">
-                  Track and manage your borrowed books and library record
-                </p>
-              </div>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">
+                Dashboard & Profile
+              </h1>
+              <p className="text-gray-600 mt-1">
+                Track and manage your borrowed books and library record
+              </p>
             </div>
           </div>
 
