@@ -35,15 +35,6 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        // Verify OTP
-        console.log('[OTP Verify] Comparing:', {
-            received: otp,
-            stored: storedOTP.otp,
-            match: storedOTP.otp === otp,
-            receivedType: typeof otp,
-            storedType: typeof storedOTP.otp,
-        });
-
         if (storedOTP.otp !== otp) {
             return NextResponse.json(
                 { error: 'Invalid OTP. Please try again.' },

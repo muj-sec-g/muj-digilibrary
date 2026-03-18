@@ -106,6 +106,11 @@ export default function HomePage() {
         throw new Error(data.error || 'Invalid OTP');
       }
 
+      // Save user session
+      if (data.student) {
+        localStorage.setItem('muj_user', JSON.stringify(data.student));
+      }
+
       router.push('/books');
     } catch (err: any) {
       setError(err.message || 'Invalid OTP. Please try again.');

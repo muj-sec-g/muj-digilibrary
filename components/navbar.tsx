@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
@@ -21,10 +21,26 @@ export function Navbar({ studentName = 'Student', studentId = '' }: NavbarProps)
   const pathname = usePathname();
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState<{ firstName: string, lastName: string, regNumber: string } | null>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('muj_user');
+    if (saved) {
+      try {
+        setUser(JSON.parse(saved));
+      } catch (e) {
+        console.error('Failed to parse user session');
+      }
+    }
+  }, []);
+
+  const displayName = user ? `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'Student' : studentName;
+  const displayId = user ? user.regNumber : studentId;
 
   const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
 
   const handleLogout = () => {
+    localStorage.removeItem('muj_user');
     router.push('/');
   };
 
@@ -69,9 +85,9 @@ export function Navbar({ studentName = 'Student', studentId = '' }: NavbarProps)
         {/* RIGHT — User info + Logout (desktop) */}
         <div className="hidden md:flex items-center gap-4 shrink-0">
           <div className="text-right">
-            <p className="text-sm font-semibold text-gray-800">{studentName}</p>
-            {studentId && (
-              <p className="text-xs text-gray-400">{studentId}</p>
+            <p className="text-sm font-semibold text-gray-800">{displayName}</p>
+            {displayId && (
+              <p className="text-xs text-gray-400">{displayId}</p>
             )}
           </div>
           <Button
@@ -120,8 +136,8 @@ export function Navbar({ studentName = 'Student', studentId = '' }: NavbarProps)
           {/* Mobile user info + logout */}
           <div className="p-4 border-t border-orange-100 flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-gray-800">{studentName}</p>
-              {studentId && <p className="text-xs text-gray-400">{studentId}</p>}
+              <p className="text-sm font-semibold text-gray-800">{displayName}</p>
+              {displayId && <p className="text-xs text-gray-400">{displayId}</p>}
             </div>
             <Button
               onClick={handleLogout}
