@@ -94,10 +94,18 @@ export async function POST(req: NextRequest) {
         });
 
     } catch (error: any) {
-        console.error('Verify OTP error:', error);
-        return NextResponse.json(
-            { error: 'Failed to verify OTP. Please try again.' },
-            { status: 500 }
+        console.error('CRITICAL Verify OTP failure:', error);
+        return new NextResponse(
+            JSON.stringify({
+                error: 'Server Error: Failed to verify OTP.',
+                details: error.message,
+                code: error.code || 'UNKNOWN_ERROR',
+                stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+            }),
+            {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            }
         );
     }
 }

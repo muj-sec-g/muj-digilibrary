@@ -13,7 +13,12 @@ function generateOTP(): string {
 }
 
 export async function POST(req: NextRequest) {
+    console.log('--- OTP Send Request Started ---');
     try {
+        // Log environment variable status (don't log the full keys for security)
+        console.log('RESEND_API_KEY status:', !!process.env.RESEND_API_KEY ? 'Present (Starts with ' + process.env.RESEND_API_KEY.substring(0, 3) + ')' : 'MISSING');
+        console.log('DATABASE_URL status:', !!process.env.DATABASE_URL ? 'Present' : 'MISSING');
+
         const body = await req.json();
         const { email, graduationYear, batchYear, isFaculty } = body;
 
@@ -138,10 +143,21 @@ export async function POST(req: NextRequest) {
         });
 
     } catch (error: any) {
-        console.error('Send OTP error:', error);
-        return NextResponse.json(
-            { error: 'Failed to send OTP. Please try again.' },
-            { status: 500 }
+        console.error('CRITICAL Send OTP failure:', error);
+
+        // This prevents the "!doctype" HTML error in the browser
+        return new NextResponse(
+            JSON.stringify({
+                error: 'Server Error: Failed to send OTP.',
+                details: error.message,
+                code: error.code || 'UNKNOWN_ERROR',
+                // Only show stack in dev mode
+                stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+            }),
+            {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            }
         );
     }
 }
