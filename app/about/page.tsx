@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Navbar } from '@/components/navbar';
 import { BeamsBackground } from '@/components/ui/beams-background';
 import { ImageIcon } from 'lucide-react';
+import Image from 'next/image';
+
 
 const TABS = [
     { id: 'overview', label: 'OVERVIEW' },
@@ -164,10 +166,17 @@ export default function AboutPage() {
                                                 <div key={location} className="flex flex-col items-center group cursor-pointer">
                                                     <div className="w-full aspect-square bg-gray-100 rounded-lg border border-gray-200 overflow-hidden relative mb-3 hover:shadow-md transition-shadow flex items-center justify-center">
                                                         {/* Placeholder for actual images */}
-                                                        <div className="text-gray-400 flex flex-col items-center">
-                                                            <ImageIcon className="w-8 h-8 mb-2 opacity-50" />
-                                                            <span className="text-[10px] uppercase tracking-wider">Add Image</span>
+                                                        {/* Your Real Image! */}
+                                                        <div className="w-28 h-28 rounded-full bg-[#87ceeb]/30 flex items-center justify-center mb-4 overflow-hidden border-4 border-white shadow-sm">
+                                                            <Image
+                                                                src={"/team/reading-hall.jpg"} // Example path like "/team/dr.-alka-pandy.jpg"
+                                                                alt={"reading-hall"}
+                                                                width={112}
+                                                                height={112}
+                                                                className="object-cover w-full h-full"
+                                                            />
                                                         </div>
+
                                                     </div>
                                                     <span className="text-sm font-medium text-gray-700 text-center group-hover:text-[#d36b36] transition-colors">{location}</span>
                                                 </div>
