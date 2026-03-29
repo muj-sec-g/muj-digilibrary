@@ -44,7 +44,7 @@ export default function AboutPage() {
             Hide scrollbar but allow horizontal scrolling 
             using a flex container that overflows 
           */}
-                    <div className="flex flex-wrap items-center gap-3 pb-4">
+                    <div className="flex flex-wrap items-center justify-center gap-3 pb-4">
                         {TABS.map((tab) => {
                             const isActive = activeTab === tab.id;
 
