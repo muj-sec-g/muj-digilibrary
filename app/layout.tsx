@@ -1,6 +1,7 @@
 import React from "react"
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import './globals.css'
@@ -42,6 +43,11 @@ export default function RootLayout({
           {children}
           <Analytics />
         </SmoothScroll>
+        <Script
+          async
+          src="https://cloud.umami.is/script.js"
+          data-website-id="65e253d2-5a68-4bd1-b888-0355c4525dc5"
+        />
       </body>
     </html>
   )
