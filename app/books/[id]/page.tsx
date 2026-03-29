@@ -8,6 +8,7 @@ import { Navbar } from '@/components/navbar';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { StatusBadge } from '@/components/status-badge';
+import { Library3DMap } from '@/components/books/library-3d-map';
 
 interface BookDetailPageProps {
   params: Promise<{
@@ -144,16 +145,18 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
             {/* Sidebar Info */}
             <div className="space-y-6">
               {/* Physical Location */}
-              <Card className="p-6 bg-white/90 backdrop-blur-md border-orange-100 shadow-lg">
+              <Card className="p-6 bg-white/90 backdrop-blur-md border-orange-100 shadow-lg overflow-hidden group">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-muted-foreground" />
                   Physical Location
                 </h3>
 
                 <div className="space-y-4">
+                  <Library3DMap location={book.location} />
+                  
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">Details</p>
-                    <p className="text-lg font-semibold text-foreground">
+                    <p className="text-lg font-semibold text-foreground uppercase tracking-tight">
                       {book.location || 'Location Not Specified'}
                     </p>
                   </div>
