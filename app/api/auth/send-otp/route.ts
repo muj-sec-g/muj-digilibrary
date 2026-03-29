@@ -4,8 +4,14 @@ import { validateStudentEmail, extractRegNumber } from '@/lib/validateEmail';
 import { otpStore } from '@/lib/otpStore';
 import { Resend } from 'resend';
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy-initialize Resend (avoids build-time crash when env var is missing)
+let resend: Resend;
+function getResend() {
+    if (!resend) {
+        resend = new Resend(process.env.RESEND_API_KEY);
+    }
+    return resend;
+}
 
 // Generate 4-digit OTP
 function generateOTP(): string {
@@ -53,7 +59,7 @@ export async function POST(req: NextRequest) {
             console.log('[Resend] API Key exists:', !!process.env.RESEND_API_KEY);
             console.log('[Resend] API Key starts with re_:', process.env.RESEND_API_KEY?.startsWith('re_'));
 
-            const result = await resend.emails.send({
+            const result = await getResend().emails.send({
                 from: 'MUJ DigiLibrary <onboarding@resend.dev>', // Change to your verified domain
                 to: email,
                 subject: 'Your MUJ DigiLibrary Login OTP',
