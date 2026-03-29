@@ -229,13 +229,317 @@ export default function AboutPage() {
                         )}
 
                         {activeTab === 'collections' && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4">Collections & E-Resources</h2>
-                                <p className="text-gray-600 leading-relaxed">
-                                    Dive into our extensive catalogs featuring millions of digital papers, academic journals, and physical books.
-                                    <br /><br />
-                                    (You can paste your collections content here).
-                                </p>
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-12">
+                                {/* Library Collections Header */}
+                                <section>
+                                    <h2 className="text-xl font-semibold text-[#d36b36] mb-4 uppercase tracking-wider border-b border-orange-100 pb-2">Library Collections</h2>
+                                    
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-6">BOOKS</h3>
+                                    <div className="overflow-x-auto border border-gray-200 rounded-xl shadow-sm">
+                                        <table className="w-full text-sm text-left">
+                                            <thead className="bg-gray-50 border-b border-gray-200">
+                                                <tr>
+                                                    <th className="py-4 px-6 font-semibold text-gray-700">Faculty</th>
+                                                    <th className="py-4 px-6 font-semibold text-gray-700 text-center">No. of Titles</th>
+                                                    <th className="py-4 px-6 font-semibold text-gray-700 text-center">No. of Volumes</th>
+                                                    <th className="py-4 px-6 font-semibold text-gray-700 text-center">E-Books</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-100 bg-white">
+                                                {[
+                                                    { faculty: 'Faculty of Engineering', titles: '9500', volumes: '35608', ebooks: '7693' },
+                                                    { faculty: 'Faculty of Design', titles: '3604', volumes: '5435', ebooks: '1102' },
+                                                    { faculty: 'Faculty of Management', titles: '3337', volumes: '9086', ebooks: '3601' },
+                                                    { faculty: 'Faculty of Arts & Law', titles: '2064', volumes: '9270', ebooks: '76602' },
+                                                    { faculty: 'Faculty of Science', titles: '1213', volumes: '3115', ebooks: '10309' },
+                                                ].map((row, i) => (
+                                                    <tr key={i} className="hover:bg-orange-50/30 transition-colors">
+                                                        <td className="py-4 px-6 font-medium text-gray-900">{row.faculty}</td>
+                                                        <td className="py-4 px-6 text-center text-gray-600 font-mono">{row.titles}</td>
+                                                        <td className="py-4 px-6 text-center text-gray-600 font-mono">{row.volumes}</td>
+                                                        <td className="py-4 px-6 text-center text-gray-600 font-mono">{row.ebooks}</td>
+                                                    </tr>
+                                                ))}
+                                                <tr className="bg-gray-50/80 font-bold text-gray-900 border-t-2 border-gray-200">
+                                                    <td className="py-4 px-6 text-right">Total</td>
+                                                    <td className="py-4 px-6 text-center font-mono">19718</td>
+                                                    <td className="py-4 px-6 text-center font-mono">62514</td>
+                                                    <td className="py-4 px-6 text-center font-mono">99307</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </section>
+
+                                {/* Print Periodicals Section */}
+                                <section>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-6">PRINT PERIODICALS</h3>
+                                    <div className="overflow-x-auto border border-gray-200 rounded-xl shadow-sm">
+                                        <table className="w-full text-sm text-left">
+                                            <thead className="bg-gray-50 border-b border-gray-200">
+                                                <tr>
+                                                    <th className="py-4 px-6 font-semibold text-gray-700 w-20">S.No.</th>
+                                                    <th className="py-4 px-6 font-semibold text-gray-700">Faculty</th>
+                                                    <th className="py-4 px-6 font-semibold text-gray-700 text-center">List of Print Journals</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-100 bg-white">
+                                                {[
+                                                    'Faculty of Engineering',
+                                                    'Faculty of Science',
+                                                    'Faculty of Management',
+                                                    'Faculty of Design',
+                                                    'Faculty of Law'
+                                                ].map((faculty, i) => (
+                                                    <tr key={i} className="hover:bg-orange-50/30 transition-colors">
+                                                        <td className="py-4 px-6 text-gray-500 font-mono">{i + 1}</td>
+                                                        <td className="py-4 px-6 font-medium text-gray-900">{faculty}</td>
+                                                        <td className="py-4 px-6 text-center">
+                                                            <button className="text-[#d36b36] font-semibold hover:underline text-xs tracking-wider uppercase">Click Here</button>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </section>
+
+                                {/* E-Resources Section */}
+                                <section className="space-y-8">
+                                    <h2 className="text-xl font-semibold text-[#d36b36] mb-8 uppercase tracking-wider border-b border-orange-100 pb-2">E-RESOURCES</h2>
+                                    
+                                    <div className="grid grid-cols-1 gap-8">
+                                        {[
+                                            { 
+                                                name: 'ASME', 
+                                                desc: 'The American Society of Mechanical Engineers (ASME) is an American professional association that, in its own words, promotes the art, science, and practice of multidisciplinary engineering and allied sciences around the globe via continuing education, training and professional development, codes and standards, research, conferences and publications, government relations, and other forms of outreach.', 
+                                                image: '/resources/asme.png' 
+                                            },
+                                            { 
+                                                name: 'IEEE', 
+                                                desc: 'The Institute of Electrical and Electronics Engineers (IEEE) is a professional association for electronic engineering and electrical engineering (and associated disciplines) with its corporate office in New York City and its operations center in Piscataway, New Jersey. It offers journals in Electrical, Electronics, Computer Science and IT.', 
+                                                image: '/resources/ieee.png' 
+                                            },
+                                            { 
+                                                name: 'ScienceDirect', 
+                                                desc: 'ScienceDirect is a website which provides subscription-based access to a large database of Engineering and Computer Sciences. It hosts over 12 million pieces of content from 3,500 academic journals and 34,000 e-books.', 
+                                                image: '/resources/sciencedirect.png' 
+                                            },
+                                            { 
+                                                name: 'Taylor & Francis', 
+                                                desc: 'Taylor & Francis Group is an international company originating in England that publishes books and academic journals. It is a division of Informa plc, a United Kingdom-based publisher and conference company. It offers journals in Engineering, Social Sciences, Management and allied.', 
+                                                image: '/resources/tandf.png' 
+                                            },
+                                            { 
+                                                name: 'EBSCO', 
+                                                desc: 'EBSCO provides products and services to libraries of very many types around the world. Its products include EBSCONET, a complete e-resource management system, and EBSCOhost, which supplies a fee-based online research service with 375 full-text databases, a collection of 600,000-plus ebooks, subject indexes, point-of-care medical references, and an array of historical digital archives.', 
+                                                image: '/resources/ebsco.png' 
+                                            },
+                                            { 
+                                                name: 'JSTOR', 
+                                                desc: 'JSTOR provides access to more than 12 million academic journal articles, books, and primary sources in 75 disciplines JSTOR is a digital library of academic journals, books, and primary sources. We help you explore a wide range of scholarly content through a powerful research and teaching platform. We collaborate with the academic community to help libraries connect students and faculty to vital content while lowering costs and increasing shelf space, provide independent researchers with free.', 
+                                                image: '/resources/jstor.png' 
+                                            },
+                                            { 
+                                                name: 'ProQuest', 
+                                                desc: 'ProQuest provides applications and products for libraries. Its resources and tools support research and learning, publishing and dissemination, and the acquisition, management and discovery of library collections.', 
+                                                image: '/resources/proquest.png' 
+                                            },
+                                            { 
+                                                name: 'Manupatra', 
+                                                desc: "India's premier online research service for the legal community. Manupatra enables legal professionals to retrieve cases, statutes, and other documents from Manupatra's vast library of legal and business materials.", 
+                                                image: '/resources/manupatra.png' 
+                                            },
+                                            { 
+                                                name: 'IEEE Xplore', 
+                                                desc: 'IEEE Xplore digital library is a research database for discovery and access to journal articles, conference proceedings, technical standards, and related materials on computer science, electrical engineering and electronics, and allied fields.', 
+                                                image: '/resources/ieee-xplore.png' 
+                                            },
+                                            { 
+                                                name: 'Lexis India', 
+                                                desc: 'Authoritative Content – Drawing from our years of publishing, technology and legal research experience, Lexis®India is a trusted legal information source used by some of the prestigious law firms, legal professionals and leading law schools throughout India.', 
+                                                image: '/resources/lexis.png' 
+                                            },
+                                            { 
+                                                name: 'Corporate Law Adviser', 
+                                                desc: 'A law graduate. Mr Bhargava is the founder of the journal "Corporate Law Adviser" which started its journey in the year 1989. He has to his credit in the capacity of Author / Editor, several books in Corporate Laws, Business Laws and Direct Taxes.', 
+                                                image: '/resources/cla.png' 
+                                            },
+                                            { 
+                                                name: 'AIR Online', 
+                                                desc: 'The All India Reporter, as an organization can take pride with all humility, as being a pioneer in the field of law publications and for revolutionizing the law publication sector. Apart from conceiving the first and only pan-India Law Reports publication, we have many Firsts to our credit.', 
+                                                image: '/resources/air.png' 
+                                            },
+                                            { 
+                                                name: 'Turnitin', 
+                                                desc: 'Turnitin is an American commercial, Internet-based plagiarism detection service which is a subsidiary of Advance.', 
+                                                image: '/resources/turnitin.png' 
+                                            },
+                                            { 
+                                                name: 'Academic Complete', 
+                                                desc: 'Academic Complete is ProQuest’s award-winning subscription database trusted by libraries around the world. For more than a decade, students have relied on Academic Completes unlimited access, multidisciplinary coverage, and powerful research tools.', 
+                                                image: '/resources/academic-complete.png' 
+                                            }
+                                        ].map((res, i) => (
+                                            <div key={i} className="bg-gray-50/50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-orange-100 group">
+                                                <div className="flex-1 space-y-4">
+                                                    <h4 className="text-xl font-bold text-gray-900 group-hover:text-[#d36b36] transition-colors">{res.name}</h4>
+                                                    <p className="text-sm text-gray-600 leading-relaxed text-justify">
+                                                        {res.desc}
+                                                    </p>
+                                                    <button className="px-6 py-2 bg-[#d36b36] text-white rounded-lg text-sm font-semibold hover:bg-[#b85a2d] transition-colors shadow-sm">
+                                                        Click Here
+                                                    </button>
+                                                </div>
+                                                <div className="w-full md:w-48 aspect-square bg-white rounded-xl shadow-inner flex items-center justify-center p-4 border border-gray-100 group-hover:scale-105 transition-transform shrink-0 relative overflow-hidden">
+                                                    {/* Generic Icon / Brand Color for now until images are uploaded */}
+                                                    <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-white -z-10" />
+                                                    <Image 
+                                                        src={res.image}
+                                                        alt={res.name}
+                                                        width={120}
+                                                        height={120}
+                                                        className="object-contain"
+                                                        onError={(e) => {
+                                                            const target = e.target as HTMLImageElement;
+                                                            target.style.display = 'none';
+                                                            const parent = target.parentElement;
+                                                            if (parent) {
+                                                                const fallback = document.createElement('div');
+                                                                fallback.className = 'text-2xl font-black text-[#d36b36]/20 uppercase';
+                                                                fallback.innerText = res.name.substring(0, 2);
+                                                                parent.appendChild(fallback);
+                                                            }
+                                                        }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
+                                {/* Open Access E-Resources Section */}
+                                <section className="space-y-12">
+                                    <h2 className="text-xl font-semibold text-[#d36b36] mb-8 uppercase tracking-wider border-b border-orange-100 pb-2">Open Access E-Resources</h2>
+
+                                    {[
+                                        {
+                                            title: "Online Courses",
+                                            data: [
+                                                { name: "SWAYAM Online Courses", url: "https://swayam.gov.in/" },
+                                                { name: "NPTEL", url: "https://nptel.ac.in/" },
+                                                { name: "Harvard online courses", url: "https://online-learning.harvard.edu/" },
+                                                { name: "MIT Open Courseware", url: "https://ocw.mit.edu/index.htm" },
+                                                { name: "e-PG Pathshala", url: "https://epgp.inflibnet.ac.in/" },
+                                                { name: "e-Content courseware in UG subjects", url: "http://cec.nic.in/cec/" },
+                                                { name: "Infoport", url: "https://infoport.inflibnet.ac.in/" },
+                                                { name: "UG/PG MOOCs", url: "http://ugcmoocs.inflibnet.ac.in/ugcmoocs/" },
+                                                { name: "IEEE online courses", url: "https://ieeexplore.ieee.org/" },
+                                            ]
+                                        },
+                                        {
+                                            title: "E-Journals",
+                                            data: [
+                                                { name: "Directory of Open Access Journals", url: "https://doaj.org/" },
+                                                { name: "Cambridge University Press", url: "https://www.cambridge.org/core/services/open-research/open-access" },
+                                                { name: "Science Direct Open Access", url: "https://www.sciencedirect.com/browse/journals-and-books?accessType=openAccess" },
+                                                { name: "Springer Open Journals", url: "https://www.springeropen.com/journals-a-z" },
+                                                { name: "Taylor & Francis Open Access", url: "https://www.tandfonline.com/openaccess" },
+                                                { name: "Oxford Open", url: "https://academic.oup.com/journals/pages/open_access" },
+                                                { name: "e-Shodh Sindhu", url: "https://ess.inflibnet.ac.in/" },
+                                                { name: "Wiley Open Access Journals", url: "https://authorservices.wiley.com/open-research/open-access/browse-journals.html" },
+                                            ]
+                                        },
+                                        {
+                                            title: "E-Books",
+                                            data: [
+                                                { name: "E-Books", url: "http://pdfdrive.net/" },
+                                                { name: "Directory of Open Access Books", url: "https://www.doabooks.org/" },
+                                                { name: "Springer e-books", url: "https://www.springeropen.com/books" },
+                                            ]
+                                        },
+                                        {
+                                            title: "Digital Library",
+                                            data: [
+                                                { name: "National Digital Library", url: "https://ndl.iitkgp.ac.in/" },
+                                                { name: "National Knowledge Network", url: "http://nkn.gov.in/en" },
+                                                { name: "Talks to Teacher", url: "https://www.ted.com/playlists/182/talks_from_inspiring_teachers" },
+                                                { name: "A-VIEW", url: "http://aview.in/" },
+                                                { name: "Virtual Labs", url: "http://www.vlab.co.in/" },
+                                                { name: "FOSSEE", url: "https://fossee.in/" },
+                                                { name: "Spoken Tutorial", url: "https://spoken-tutorial.org/" },
+                                                { name: "e-Yantra", url: "https://www.e-yantra.org/" },
+                                                { name: "Oscar++", url: "https://www.it.iitb.ac.in/oscar/" },
+                                                { name: "E-Kalpa", url: "https://icar.org.in/content/e-kalpa" },
+                                                { name: "Open Knowledge Repository - World Bank", url: "https://openknowledge.worldbank.org/" },
+                                                { name: "SWAYAMPRABHA", url: "https://www.swayamprabha.gov.in/" },
+                                                { name: "Vidwan", url: "https://vidwan.inflibnet.ac.in/" },
+                                                { name: "SNLTR", url: "https://nltr.org/" },
+                                                { name: "ILOSTAT", url: "https://www.ilo.org/" },
+                                                { name: "Project Euclid", url: "https://projecteuclid.org/librarians/lib_oa" },
+                                                { name: "AidData", url: "https://www.aiddata.org/" },
+                                                { name: "Legal Information", url: "http://www.commonlii.org/resources/221.html" },
+                                                { name: "The OAPEN Foundation", url: "https://www.oapen.org/content/" },
+                                                { name: "PubMed Central (PMC)", url: "https://www.ncbi.nlm.nih.gov/pmc/" },
+                                                { name: "Project Gutenberg", url: "https://www.dev.gutenberg.org/" },
+                                                { name: "High Wire", url: "https://www.highwirepress.com/" },
+                                                { name: "AGRIS", url: "http://agris.fao.org/agris-search/index.do" },
+                                                { name: "Southern Connecticut State University", url: "https://libguides.southernct.edu/openaccess" },
+                                                { name: "LibriVox - Audio Books", url: "https://librivox.org/" },
+                                            ]
+                                        },
+                                        {
+                                            title: "Theses and Dissertations",
+                                            data: [
+                                                { name: "E-Shodhganga - Indian Theses", url: "https://shodhganga.inflibnet.ac.in/" },
+                                                { name: "Networked Digital Library of Theses and Dissertations (NDLTD)", url: "http://search.ndltd.org/" },
+                                                { name: "Open Access Thesis & Dissertations", url: "https://oatd.org/" },
+                                            ]
+                                        },
+                                        {
+                                            title: "Newspapers",
+                                            data: [
+                                                { name: "Newspapers", url: "https://www.pressreader.com/catalog/english" },
+                                            ]
+                                        }
+                                    ].map((section, sidx) => (
+                                        <div key={sidx} className="space-y-4">
+                                            <h3 className="text-xl font-bold text-gray-900 border-l-4 border-[#d36b36] pl-4">{section.title}</h3>
+                                            <div className="overflow-hidden border border-gray-200 rounded-xl shadow-sm bg-white">
+                                                <table className="w-full text-sm text-left">
+                                                    <thead className="bg-gray-50 border-b border-gray-200">
+                                                        <tr>
+                                                            <th className="py-3 px-6 font-semibold text-gray-700 w-16 text-center">S.No.</th>
+                                                            <th className="py-3 px-6 font-semibold text-gray-700">Source Name</th>
+                                                            <th className="py-3 px-6 font-semibold text-gray-700">Access URL</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody className="divide-y divide-gray-100">
+                                                        {section.data.map((item, idx) => (
+                                                            <tr key={idx} className="hover:bg-orange-50/30 transition-colors">
+                                                                <td className="py-3 px-6 text-gray-500 font-mono text-center">{idx + 1}</td>
+                                                                <td className="py-3 px-6 font-medium text-gray-900">{item.name}</td>
+                                                                <td className="py-3 px-6">
+                                                                    <a 
+                                                                        href={item.url} 
+                                                                        target="_blank" 
+                                                                        rel="noopener noreferrer"
+                                                                        className="text-[#d36b36] hover:text-[#b85a2d] hover:underline transition-colors break-all font-mono text-xs flex items-center gap-2"
+                                                                    >
+                                                                        {item.url}
+                                                                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                                        </svg>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </section>
                             </div>
                         )}
 
