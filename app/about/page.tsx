@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { Navbar } from '@/components/navbar';
 import { BeamsBackground } from '@/components/ui/beams-background';
-import { ImageIcon } from 'lucide-react';
+import { ImageIcon, X, MapPin, Mail } from 'lucide-react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'motion/react';
 
 
 const TABS = [
@@ -20,6 +21,7 @@ const TABS = [
 
 export default function AboutPage() {
     const [activeTab, setActiveTab] = useState('overview');
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     return (
         <BeamsBackground className="flex flex-col" intensity="medium">
@@ -42,7 +44,7 @@ export default function AboutPage() {
             Hide scrollbar but allow horizontal scrolling 
             using a flex container that overflows 
           */}
-                    <div className="flex items-center gap-3 overflow-x-auto pb-4 scrollbar-hide snap-x">
+                    <div className="flex flex-wrap items-center gap-3 pb-4">
                         {TABS.map((tab) => {
                             const isActive = activeTab === tab.id;
 
@@ -156,29 +158,29 @@ export default function AboutPage() {
                                         <h2 className="text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Library Layout</h2>
                                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                                             {[
-                                                'Reading Hall',
-                                                'Books Stock Area',
-                                                'Periodical Section',
-                                                'Circulation Counter',
-                                                'Discussion Rooms',
-                                                'Digital Library'
-                                            ].map((location) => (
-                                                <div key={location} className="flex flex-col items-center group cursor-pointer">
-                                                    <div className="w-full aspect-square bg-gray-100 rounded-lg border border-gray-200 overflow-hidden relative mb-3 hover:shadow-md transition-shadow flex items-center justify-center">
-                                                        {/* Placeholder for actual images */}
-                                                        {/* Your Real Image! */}
-                                                        <div className="w-28 h-28 rounded-full bg-[#87ceeb]/30 flex items-center justify-center mb-4 overflow-hidden border-4 border-white shadow-sm">
+                                                { name: 'Reading Hall', image: '/library/reading-hall.png' },
+                                                { name: 'Books Stock Area', image: '/library/book-stock.png' },
+                                                { name: 'Periodical Section', image: '/library/periodical.png' },
+                                                { name: 'Circulation Counter', image: '/library/circulation-counter.png' },
+                                                { name: 'Discussion Rooms', image: '/library/discussion-rooms.png' },
+                                                { name: 'Digital Library', image: '/library/digital-library.png' }
+                                            ].map((location, idx) => (
+                                                <div 
+                                                    key={idx} 
+                                                    className="flex flex-col items-center group cursor-pointer hover:-translate-y-1 transition-transform"
+                                                    onClick={() => setSelectedImage(location.image)}
+                                                >
+                                                    <div className="w-full aspect-square bg-gray-100 rounded-lg border border-gray-200 overflow-hidden relative mb-3 hover:shadow-lg transition-shadow flex items-center justify-center ring-2 ring-transparent group-hover:ring-[#d36b36]/50">
+                                                        <div className="w-28 h-28 rounded-full bg-[#87ceeb]/30 flex items-center justify-center mb-4 overflow-hidden border-4 border-white shadow-sm relative">
                                                             <Image
-                                                                src={"/team/reading-hall.jpg"} // Example path like "/team/dr.-alka-pandy.jpg"
-                                                                alt={"reading-hall"}
-                                                                width={112}
-                                                                height={112}
-                                                                className="object-cover w-full h-full"
+                                                                src={location.image}
+                                                                alt={location.name}
+                                                                fill
+                                                                className="object-cover"
                                                             />
                                                         </div>
-
                                                     </div>
-                                                    <span className="text-sm font-medium text-gray-700 text-center group-hover:text-[#d36b36] transition-colors">{location}</span>
+                                                    <span className="text-sm font-medium text-gray-700 text-center group-hover:text-[#d36b36] transition-colors">{location.name}</span>
                                                 </div>
                                             ))}
                                         </div>
@@ -189,19 +191,28 @@ export default function AboutPage() {
                                         <h2 className="text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Library Team</h2>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                             {[
-                                                { name: 'Dr. K.S. Shivraj', title: 'Chief Librarian, MUJ Libraries', tags: 'B.Sc., M.A. , M.L.I.S., M.Phil., PGDCA, Ph.D', email: 'karamadai.shivraj@jaipur.manipal.edu' },
-                                                { name: 'Dr. Alka Pandy', title: 'Asst. Librarian', tags: 'B.A., L.L.B, B.LI.Sc., M.L.I.S., Ph.D', email: 'periodicals@jaipur.manipal.edu' },
-                                                { name: 'Mr. Ramraj Choudhary', title: 'Professional Assistant (II)\nTechnical Section', tags: 'B.A., B.ED., B.LI.Sc., M.LI.Sc.', email: 'books@jaipur.manipal.edu' },
-                                                { name: 'Mr. Omprakash Verma', title: 'Professional Assistant (II)\nTechnical Section', tags: 'B.A., M.A., D.LI.Sc., B.LI.Sc., M.LI.Sc., RSCIT', email: 'books@jaipur.manipal.edu' },
-                                                { name: 'Mr. Vikas Tatiwal', title: 'Digital Library Assistant (III)', tags: 'Diploma Computer Hardware, MCA', email: 'vikas.tatiwal@jaipur.manipal.edu' },
-                                                { name: 'Mr. Dheeraj Sain', title: 'Junior Digital Library Assistant (I)', tags: 'Diploma in Php, BCA', email: 'dheeraj.sain@jaipur.manipal.edu' },
-                                                { name: 'Mr. Manoj Kumawat', title: 'Junior General Duty Worker', tags: 'B.A., B.LI.Sc., M.LI.Sc.', email: '' },
-                                                { name: 'Mr. Dinesh Kumar Sharma', title: 'Junior General Duty Worker', tags: 'B.Com.', email: '' },
-                                                { name: 'Mr. Madan Lal Sharma', title: 'Junior General Duty Worker', tags: 'B.A.', email: '' }
+                                                { name: 'Dr. K.S. Shivraj', title: 'Chief Librarian, MUJ Libraries', tags: 'B.Sc., M.A. , M.L.I.S., M.Phil., PGDCA, Ph.D', email: 'karamadai.shivraj@jaipur.manipal.edu', image: '/team/Dr. K.S. Shivraj-1.jpg' },
+                                                { name: 'Dr. Alka Pandy', title: 'Asst. Librarian', tags: 'B.A., L.L.B, B.LI.Sc., M.L.I.S., Ph.D', email: 'periodicals@jaipur.manipal.edu', image: '/team/Dr. Alka Pandy.jpg' },
+                                                { name: 'Mr. Ramraj Choudhary', title: 'Professional Assistant (II)\nTechnical Section', tags: 'B.A., B.ED., B.LI.Sc., M.LI.Sc.', email: 'books@jaipur.manipal.edu', image: '/team/Mr. Ramraj Choudhary.jpg' },
+                                                { name: 'Mr. Omprakash Verma', title: 'Professional Assistant (II)\nTechnical Section', tags: 'B.A., M.A., D.LI.Sc., B.LI.Sc., M.LI.Sc., RSCIT', email: 'books@jaipur.manipal.edu', image: '/team/Mr. Omprakash Verma (1).jpg' },
+                                                { name: 'Mr. Vikas Tatiwal', title: 'Digital Library Assistant (III)', tags: 'Diploma Computer Hardware, MCA', email: 'vikas.tatiwal@jaipur.manipal.edu', image: '/team/Mr. Vikas Tatiwal.jpg' },
+                                                { name: 'Mr. Dheeraj Sain', title: 'Junior Digital Library Assistant (I)', tags: 'Diploma in Php, BCA', email: 'dheeraj.sain@jaipur.manipal.edu', image: '/team/Mr. Dheeraj Sain.jpg' },
+                                                { name: 'Mr. Manoj Kumawat', title: 'Junior General Duty Worker', tags: 'B.A., B.LI.Sc., M.LI.Sc.', email: '', image: '/team/Mr. Manoj Kumawat.jpg' },
+                                                { name: 'Mr. Dinesh Kumar Sharma', title: 'Junior General Duty Worker', tags: 'B.Com.', email: '', image: '/team/Mr. Dinesh Kumar Sharma.jpg' },
+                                                { name: 'Mr. Madan Lal Sharma', title: 'Junior General Duty Worker', tags: 'B.A.', email: '', image: '/team/Mr. Madan Lal Sharma.jpg' }
                                             ].map((member, i) => (
-                                                <div key={i} className="bg-gray-50/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                                                    <div className="w-28 h-28 rounded-full bg-[#87ceeb]/30 flex items-center justify-center mb-4 overflow-hidden border-4 border-white shadow-sm">
-                                                        <ImageIcon className="w-8 h-8 text-[#87ceeb] opacity-70" />
+                                                <div key={i} className={`bg-gray-50/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition-all hover:-translate-y-1 ${i === 8 ? 'lg:col-span-4 sm:col-span-2 w-full max-w-sm mx-auto' : ''}`}>
+                                                    <div className="w-28 h-28 rounded-full bg-[#87ceeb]/30 flex items-center justify-center mb-4 overflow-hidden border-4 border-white shadow-sm relative">
+                                                        {member.image ? (
+                                                            <Image
+                                                                src={member.image}
+                                                                alt={member.name}
+                                                                fill
+                                                                className="object-cover"
+                                                            />
+                                                        ) : (
+                                                            <ImageIcon className="w-8 h-8 text-[#87ceeb] opacity-70" />
+                                                        )}
                                                     </div>
                                                     <h3 className="text-lg font-bold text-[#d36b36] mb-1">{member.name}</h3>
                                                     <p className="text-sm font-medium text-gray-700 mb-2 whitespace-pre-wrap">{member.title}</p>
@@ -285,18 +296,84 @@ export default function AboutPage() {
 
                         {activeTab === 'contact' && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4">Contact Us</h2>
-                                <p className="text-gray-600 leading-relaxed">
-                                    Get in touch with the library administration.
-                                    <br /><br />
-                                    Email: library@muj.manipal.edu<br />
-                                    Phone: +91-141-3999100
-                                </p>
+                                <h2 className="text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Contact Us</h2>
+                                <div className="bg-gray-50/80 backdrop-blur-sm p-8 rounded-2xl border border-gray-100 flex flex-col space-y-4">
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center shrink-0 border-2 border-white shadow-sm overflow-hidden relative">
+                                            <Image 
+                                                src="/team/Dr. K.S. Shivraj-1.jpg"
+                                                alt="Dr. K.S. Shivraj"
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-bold text-gray-900">Dr. K.S. Shivraj, Ph.D.</h3>
+                                            <p className="text-[#d36b36] font-semibold uppercase tracking-wider text-xs">Chief Librarian</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="space-y-3 pt-4 border-t border-gray-200">
+                                        <div className="flex items-start gap-3">
+                                            <div className="w-5 h-5 rounded bg-orange-50 flex items-center justify-center shrink-0 mt-0.5">
+                                                <MapPin className="w-3 h-3 text-[#d36b36]" />
+                                            </div>
+                                            <p className="text-sm text-gray-600 leading-relaxed">
+                                                Manipal University Jaipur | Off Jaipur-Ajmer Expressway | Post: Dehmi Kalan | Jaipur-303007 | Rajasthan | India
+                                            </p>
+                                        </div>
+                                        
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-5 h-5 rounded bg-orange-50 flex items-center justify-center shrink-0">
+                                                <Mail className="w-3 h-3 text-[#d36b36]" />
+                                            </div>
+                                            <p className="text-sm">
+                                                <a href="mailto:karamadai.shivraj@jaipur.manipal.edu" className="text-gray-900 font-medium hover:text-[#d36b36] transition-colors">
+                                                    karamadai.shivraj@jaipur.manipal.edu
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         )}
                     </div>
                 </div>
             </main>
+
+            {/* Image Modal overlay */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImage(null)}
+                        className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm p-4 md:p-12 cursor-zoom-out"
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            className="relative w-full max-w-5xl aspect-[4/3] md:aspect-video rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] bg-slate-100 border border-slate-700/50"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                onClick={() => setSelectedImage(null)}
+                                className="absolute top-4 right-4 z-10 p-2 bg-slate-900/50 hover:bg-slate-900/80 rounded-full text-white transition-colors backdrop-blur-md"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                            <Image
+                                src={selectedImage}
+                                alt="Expanded view"
+                                fill
+                                className="object-contain"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </BeamsBackground>
     );
 }
