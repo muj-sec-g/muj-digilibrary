@@ -295,11 +295,11 @@ export default function AboutPage() {
                         )}
 
                         {activeTab === 'contact' && (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 flex flex-col items-center">
                                 <h2 className="text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Contact Us</h2>
-                                <div className="bg-gray-50/80 backdrop-blur-sm p-8 rounded-2xl border border-gray-100 flex flex-col space-y-4">
-                                    <div className="flex items-start gap-4">
-                                        <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center shrink-0 border-2 border-white shadow-sm overflow-hidden relative">
+                                <div className="bg-gray-50/80 backdrop-blur-sm p-8 rounded-2xl border border-gray-100 flex flex-col items-center text-center space-y-4 max-w-2xl w-full mx-auto shadow-sm">
+                                    <div className="flex flex-col items-center gap-4">
+                                        <div className="w-24 h-24 rounded-full bg-orange-100 flex items-center justify-center shrink-0 border-4 border-white shadow-md overflow-hidden relative transition-transform hover:scale-105 duration-300">
                                             <Image 
                                                 src="/team/Dr. K.S. Shivraj-1.jpg"
                                                 alt="Dr. K.S. Shivraj"
@@ -308,27 +308,27 @@ export default function AboutPage() {
                                             />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-bold text-gray-900">Dr. K.S. Shivraj, Ph.D.</h3>
-                                            <p className="text-[#d36b36] font-semibold uppercase tracking-wider text-xs">Chief Librarian</p>
+                                            <h3 className="text-2xl font-bold text-gray-900">Dr. K.S. Shivraj, Ph.D.</h3>
+                                            <p className="text-[#d36b36] font-bold uppercase tracking-[0.2em] text-xs mt-1">Chief Librarian</p>
                                         </div>
                                     </div>
                                     
-                                    <div className="space-y-3 pt-4 border-t border-gray-200">
-                                        <div className="flex items-start gap-3">
-                                            <div className="w-5 h-5 rounded bg-orange-50 flex items-center justify-center shrink-0 mt-0.5">
-                                                <MapPin className="w-3 h-3 text-[#d36b36]" />
+                                    <div className="space-y-4 pt-6 border-t border-gray-200 w-full">
+                                        <div className="flex flex-col items-center gap-2">
+                                            <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center shrink-0 mb-1">
+                                                <MapPin className="w-4 h-4 text-[#d36b36]" />
                                             </div>
-                                            <p className="text-sm text-gray-600 leading-relaxed">
+                                            <p className="text-sm text-gray-600 leading-relaxed max-w-md">
                                                 Manipal University Jaipur | Off Jaipur-Ajmer Expressway | Post: Dehmi Kalan | Jaipur-303007 | Rajasthan | India
                                             </p>
                                         </div>
                                         
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-5 h-5 rounded bg-orange-50 flex items-center justify-center shrink-0">
-                                                <Mail className="w-3 h-3 text-[#d36b36]" />
+                                        <div className="flex flex-col items-center gap-2">
+                                            <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center shrink-0 mb-1">
+                                                <Mail className="w-4 h-4 text-[#d36b36]" />
                                             </div>
                                             <p className="text-sm">
-                                                <a href="mailto:karamadai.shivraj@jaipur.manipal.edu" className="text-gray-900 font-medium hover:text-[#d36b36] transition-colors">
+                                                <a href="mailto:karamadai.shivraj@jaipur.manipal.edu" className="text-lg font-semibold text-gray-900 hover:text-[#d36b36] transition-colors underline decoration-[#d36b36]/30 underline-offset-4">
                                                     karamadai.shivraj@jaipur.manipal.edu
                                                 </a>
                                             </p>
