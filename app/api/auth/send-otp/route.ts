@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
             console.log('[Resend] API Key starts with re_:', process.env.RESEND_API_KEY?.startsWith('re_'));
 
             const result = await getResend().emails.send({
-                from: 'MUJ DigiLibrary <onboarding@resend.dev>', // Change to your verified domain
+                from: 'MUJ DigiLibrary <noreply@mujlibrary.live>', // Using verified custom domain
                 to: email,
                 subject: 'Your MUJ DigiLibrary Login OTP',
                 html: `
