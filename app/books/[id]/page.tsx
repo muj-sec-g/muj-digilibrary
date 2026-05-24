@@ -32,13 +32,13 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
 
   return (
     <BeamsBackground
-      className="flex flex-col h-screen"
+      className="flex flex-col min-h-screen"
       intensity="medium"
     >
       <Navbar studentName="Piyush" studentId="23FE10CAI00225" />
 
       <main className="flex-1 overflow-auto">
-        <div className="p-8 max-w-7xl mx-auto relative z-10">
+        <div className="px-4 py-6 md:p-8 max-w-7xl mx-auto relative z-10">
           {/* Back Button */}
           <Link href="/books">
             <Button variant="ghost" size="sm" className="mb-6 hover:bg-white/50 bg-white/30 backdrop-blur-sm border border-orange-100 shadow-sm text-gray-700">
@@ -50,11 +50,11 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Book Info Card */}
             <div className="lg:col-span-2">
-              <Card className="p-8 bg-white/90 backdrop-blur-md border-orange-100 shadow-xl relative overflow-hidden">
+              <Card className="p-4 sm:p-8 bg-white/90 backdrop-blur-md border-orange-100 shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-100/40 to-transparent rounded-full blur-3xl -z-10" />
                 {/* Book Header */}
-                <div className="flex flex-col sm:flex-row gap-8 mb-8">
-                  <div className="w-40 h-56 bg-muted rounded-lg flex items-center justify-center flex-shrink-0 relative overflow-hidden shadow-sm">
+                <div className="flex flex-col sm:flex-row gap-6 md:gap-8 mb-8">
+                  <div className="w-40 h-56 bg-muted rounded-lg flex items-center justify-center flex-shrink-0 relative overflow-hidden shadow-sm mx-auto sm:mx-0">
                     {book.coverImage ? (
                       <Image
                         src={book.coverImage}
@@ -68,23 +68,25 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
                     )}
                   </div>
 
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1 text-center sm:text-left">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                       <div>
-                        <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-2">
+                        <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent mb-2">
                           {book.title}
                         </h1>
                         <p className="text-lg text-gray-600 mb-4">
                           by {book.author}
                         </p>
                       </div>
-                      <StatusBadge
-                        status={isAvailable ? 'available' : 'issued'}
-                        label={isAvailable ? 'Available' : 'Issued'}
-                      />
+                      <div className="flex justify-center sm:block">
+                        <StatusBadge
+                          status={isAvailable ? 'available' : 'issued'}
+                          label={isAvailable ? 'Available' : 'Issued'}
+                        />
+                      </div>
                     </div>
 
-                    <div className="space-y-2 text-sm mb-6">
+                    <div className="space-y-2 text-sm mb-6 text-left">
                       <p>
                         <span className="text-muted-foreground">ISBN:</span>
                         <span className="ml-2 font-medium text-foreground">

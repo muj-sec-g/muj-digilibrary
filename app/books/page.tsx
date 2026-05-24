@@ -145,22 +145,22 @@ export default function BooksPage() {
             <Navbar />
 
             <main className="flex-1">
-                <div className="p-8 max-w-7xl mx-auto border-transparent relative z-10">
+                <div className="px-4 py-6 md:p-8 max-w-7xl mx-auto border-transparent relative z-10">
 
                     {/* Header */}
-                    <div className="mb-8 relative flex items-center justify-between flex-wrap gap-4">
+                    <div className="mb-6 md:mb-8 relative flex items-center justify-between flex-wrap gap-4">
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-900">
+                            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
                                 Browse Books
                             </h1>
-                            <p className="text-gray-600 mt-1">
+                            <p className="text-gray-600 mt-1 text-sm sm:text-base">
                                 Search by title, author, or category
                             </p>
                         </div>
                     </div>
 
                     {/* Advanced Search Bar Block */}
-                    <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-orange-100 shadow-xl p-6 mb-12 relative overflow-hidden">
+                    <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-orange-100 shadow-xl p-4 sm:p-6 mb-8 md:mb-12 relative overflow-hidden">
                         {/* Decorative blob */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-100/50 to-transparent rounded-full blur-3xl -z-10" />
 
@@ -215,7 +215,7 @@ export default function BooksPage() {
                         /* Categories Grid View */
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                             <div className="flex items-center gap-2 mb-6 text-gray-800">
-                                <h2 className="text-2xl font-bold">Search via Categories</h2>
+                                <h2 className="text-xl sm:text-2xl font-bold">Search via Categories</h2>
                             </div>
 
                             {loadingCategories ? (
@@ -232,7 +232,7 @@ export default function BooksPage() {
                                             <div
                                                 key={category.name}
                                                 onClick={() => handleCategoryClick(category.name)}
-                                                className={`bg-gradient-to-br ${style.color} rounded-2xl border border-orange-100 p-8 cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden group`}
+                                                className={`bg-gradient-to-br ${style.color} rounded-2xl border border-orange-100 p-6 md:p-8 cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden group`}
                                             >
                                                 {/* Decorative blob inside card */}
                                                 <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-orange-200/40 to-transparent rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />

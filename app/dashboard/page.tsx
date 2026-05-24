@@ -57,14 +57,14 @@ export default function Dashboard() {
       <Navbar />
 
       <main className="flex-1">
-        <div className="p-8">
+        <div className="px-4 py-6 md:p-8">
           {/* Header */}
-          <div className="mb-8 relative">
+          <div className="mb-6 md:mb-8 relative">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
                 Dashboard & Profile
               </h1>
-              <p className="text-gray-600 mt-1">
+              <p className="text-gray-600 mt-1 text-sm sm:text-base">
                 Track and manage your borrowed books and library record
               </p>
             </div>
@@ -116,7 +116,7 @@ export default function Dashboard() {
                 <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
               </div>
             ) : issuedBooks.length === 0 ? (
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-orange-100 shadow-lg p-16 text-center">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-orange-100 shadow-lg p-8 sm:p-16 text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mx-auto mb-6">
                   <BookMarked className="w-10 h-10 text-orange-600" />
                 </div>

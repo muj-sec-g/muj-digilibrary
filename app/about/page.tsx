@@ -29,22 +29,22 @@ export default function AboutPage() {
 
             <main className="flex-1 flex flex-col pt-8 space-y-8">
                 {/* Header Section */}
-                <div className="px-6 md:px-12 shrink-0">
+                <div className="px-4 md:px-12 shrink-0">
                     <h1 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-2">
                         About Our Library
                     </h1>
-                    <p className="text-gray-500 text-lg max-w-2xl">
+                    <p className="text-gray-500 text-sm sm:text-lg max-w-2xl">
                         Explore our vast collections, institutional practices, and digital resources provided by the university.
                     </p>
                 </div>
 
                 {/* Tab Navigation Area */}
-                <div className="w-full px-6 md:px-12 shrink-0">
+                <div className="w-full px-4 md:px-12 shrink-0">
                     {/* 
             Hide scrollbar but allow horizontal scrolling 
             using a flex container that overflows 
           */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 pb-4">
+                    <div className="flex overflow-x-auto gap-3 pb-3 snap-x snap-mandatory flex-nowrap md:flex-wrap md:justify-center px-4 -mx-4 scrollbar-none">
                         {TABS.map((tab) => {
                             const isActive = activeTab === tab.id;
 
@@ -69,14 +69,14 @@ export default function AboutPage() {
                 </div>
 
                 {/* Content Details Area */}
-                <div className="flex-1 px-6 md:px-12 pb-12">
-                    <div className="bg-white/90 backdrop-blur-md border border-orange-100/50 shadow-xl rounded-2xl p-8 min-h-[500px]">
+                <div className="flex-1 px-4 md:px-12 pb-12">
+                    <div className="bg-white/90 backdrop-blur-md border border-orange-100/50 shadow-xl rounded-2xl p-4 sm:p-8 min-h-[500px]">
                         {activeTab === 'overview' && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                                 <div className="space-y-16">
                                     {/* Text Section */}
                                     <section>
-                                        <h2 className="text-2xl font-bold text-[#d36b36] mb-4 uppercase tracking-wide">Overview</h2>
+                                        <h2 className="text-xl md:text-2xl font-bold text-[#d36b36] mb-4 uppercase tracking-wide">Overview</h2>
                                         <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base text-justify">
                                             <p>
                                                 The Central Library of MUJ has a spacious area of <span className="font-bold text-[#d36b36]">2319 Sq.m.</span> that exudes peaceful learning environment. The Library is fully air-conditioned with the <span className="font-bold text-[#d36b36]">seating capacity of 700</span>. The central Library employs <span className="font-bold text-[#d36b36]">RFID technology</span> for access control, automatic issue and return of library documents, and stock verification of library holdings. The Central Library has a collection of <span className="font-bold text-[#d36b36]">57800 books</span> with <span className="font-bold text-[#d36b36]">14500 titles</span> on various subjects and over <span className="font-bold text-[#d36b36]">3000 reference books</span>. It subscribes about <span className="font-bold text-[#d36b36]">400 national and international print journals</span> and holds over <span className="font-bold text-[#d36b36]">450 project reports</span> and <span className="font-bold text-[#d36b36]">95 Ph.D Thesis</span>. The Digital Library has subscribed <span className="font-bold text-[#d36b36]">18 E-Resources</span> include <span className="font-bold text-[#d36b36]">17800 e-journals</span>, manuals, reports, standards, and other information from ASME, IEL Online, Science Direct, Taylor & Francis, EBSCO Business Source Elite, EBSCO Art & Architecture, EBSCO Hospitality & Tourism Complete, EBSCO Academic Search Elite, EPW India Time Series, JSTOR, Manupatra, Lexis India, Supreme Court Cases, and AIR Online.
@@ -92,11 +92,11 @@ export default function AboutPage() {
 
                                     {/* Working Hours Section */}
                                     <section>
-                                        <h2 className="text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Working Hours</h2>
+                                        <h2 className="text-xl md:text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Working Hours</h2>
 
                                         <div className="space-y-8">
                                             {/* Week Days Table */}
-                                            <div className="overflow-hidden border border-gray-200 rounded-lg shadow-sm">
+                                            <div className="overflow-x-auto border border-gray-200 rounded-lg shadow-sm w-full">
                                                 <table className="w-full text-sm text-center">
                                                     <thead className="bg-gray-50 border-b border-gray-200">
                                                         <tr>
@@ -124,7 +124,7 @@ export default function AboutPage() {
                                             </div>
 
                                             {/* Sundays & Holidays Table */}
-                                            <div className="overflow-hidden border border-gray-200 rounded-lg shadow-sm">
+                                            <div className="overflow-x-auto border border-gray-200 rounded-lg shadow-sm w-full">
                                                 <table className="w-full text-sm text-center">
                                                     <thead className="bg-gray-50 border-b border-gray-200">
                                                         <tr>
@@ -155,7 +155,7 @@ export default function AboutPage() {
 
                                     {/* Library Layout Section */}
                                     <section>
-                                        <h2 className="text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Library Layout</h2>
+                                        <h2 className="text-xl md:text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Library Layout</h2>
                                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                                             {[
                                                 { name: 'Reading Hall', image: '/library/reading-hall.png' },
@@ -188,7 +188,7 @@ export default function AboutPage() {
 
                                     {/* Library Team Section */}
                                     <section>
-                                        <h2 className="text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Library Team</h2>
+                                        <h2 className="text-xl md:text-2xl font-bold text-[#d36b36] mb-6 uppercase tracking-wide">Library Team</h2>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                             {[
                                                 { name: 'Dr. K.S. Shivraj', title: 'Chief Librarian, MUJ Libraries', tags: 'B.Sc., M.A. , M.L.I.S., M.Phil., PGDCA, Ph.D', email: 'karamadai.shivraj@jaipur.manipal.edu', image: '/team/Dr. K.S. Shivraj-1.jpg' },

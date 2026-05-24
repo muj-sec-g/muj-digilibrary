@@ -180,38 +180,38 @@ export default function HomePage() {
   };
 
   return (
-    <div className="h-screen w-full relative bg-slate-50 overflow-y-hidden">
+    <div className="min-h-screen md:h-screen w-full relative bg-slate-50 overflow-y-auto md:overflow-y-hidden">
       <BackgroundBeams />
-      <div className="h-full w-full flex flex-col md:flex-row relative z-10">
+      <div className="min-h-screen md:h-full w-full flex flex-col md:flex-row relative z-10">
 
         {/* LEFT PANEL — Branding (60%) */}
-        <div className="relative w-full md:w-[60%] h-[40vh] md:h-full flex flex-col items-center justify-center shrink-0">
-          <div className="relative z-10 text-center px-8 max-w-xl">
+        <div className="relative w-full md:w-[60%] py-8 md:py-0 md:h-full flex flex-col items-center justify-center shrink-0">
+          <div className="relative z-10 text-center px-4 sm:px-8 max-w-xl">
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-6 md:mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-3 md:mb-8">
               <GraduationCap className="w-4 h-4" />
               <span>Manipal University Jaipur</span>
             </div>
 
             {/* Hero Title */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 to-neutral-500 font-bold tracking-tight leading-tight pb-2 mb-4 md:mb-6">
-              MUJ <br /> DigiLibrary
+            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 to-neutral-500 font-bold tracking-tight leading-tight pb-1 mb-2 md:mb-6">
+              MUJ <br className="hidden md:inline" /> DigiLibrary
             </h1>
 
             {/* Description */}
-            <p className="hidden md:block text-neutral-500 max-w-md mx-auto text-lg mb-8">
+            <p className="text-neutral-500 max-w-sm sm:max-w-md mx-auto text-xs sm:text-sm md:text-lg mb-6 md:mb-8 px-4 leading-relaxed">
               The official digital gateway to knowledge. Track books, manage renewals, and explore the catalog from anywhere on campus.
             </p>
 
             {/* Stats */}
-            <div className="hidden md:flex justify-center gap-8 opacity-60">
-              <div className="flex items-center gap-2 text-neutral-500 text-sm">
-                <Library className="w-4 h-4" />
+            <div className="flex justify-center gap-4 md:gap-8 opacity-90 mb-4 md:mb-0">
+              <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/80 border border-orange-500/10 text-neutral-600 text-xs sm:text-sm shadow-sm">
+                <Library className="w-4 h-4 text-orange-500" />
                 <span>25,000+ Books</span>
               </div>
-              <div className="flex items-center gap-2 text-neutral-500 text-sm">
-                <BookOpen className="w-4 h-4" />
+              <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/80 border border-orange-500/10 text-neutral-600 text-xs sm:text-sm shadow-sm">
+                <BookOpen className="w-4 h-4 text-orange-500" />
                 <span>Digital Access</span>
               </div>
             </div>
@@ -220,13 +220,13 @@ export default function HomePage() {
 
 
         {/* RIGHT PANEL — Login Form (40%) */}
-        <div className="relative w-full md:w-[40%] flex-1 flex items-center justify-center px-6 py-8 md:py-0">
+        <div className="relative w-full md:w-[40%] flex-1 flex items-center justify-center px-4 sm:px-6 py-6 md:py-0">
 
           {/* Subtle decorative gradient orbs */}
           <div className="absolute top-0 right-0 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-60 h-60 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="w-full max-w-md relative z-10">
+          <div className="w-full max-w-md relative z-10 px-2 sm:px-0">
 
             {/* Login Card with Glowing Effect */}
             <div className="relative rounded-2xl">
